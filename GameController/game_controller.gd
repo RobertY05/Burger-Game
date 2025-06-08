@@ -98,6 +98,8 @@ func set_money(new_money : int):
 
 # sets variables to default, starts the game
 func reset_game():
+	set_points(0)
+	
 	_hud.show()
 	
 	_camera.global_position = Vector2.ZERO

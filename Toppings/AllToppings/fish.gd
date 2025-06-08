@@ -5,7 +5,7 @@ func _init():
 	topping_type = "Protein"
 	height = 10
 	rarity = tiers.UNCOMMON
-	cost = 55
+	cost = 30
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	for i in range(topping_list.size()):

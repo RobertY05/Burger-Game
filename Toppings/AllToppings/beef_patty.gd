@@ -14,4 +14,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "+20 points when graded."
+	return "+25 points when graded."

@@ -5,7 +5,7 @@ func _init():
 	topping_type = "Vegetable"
 	height = 1
 	rarity = tiers.UNCOMMON
-	cost = 30
+	cost = 15
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.add_points(-5)
