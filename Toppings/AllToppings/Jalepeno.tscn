@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5yf8nv4tt83"]
+
+[ext_resource type="Script" uid="uid://dbgccffatub85" path="res://Toppings/AllToppings/jalepeno.gd" id="1_d3d8w"]
+[ext_resource type="Texture2D" uid="uid://dmu28yfp7gn0r" path="res://Textures/Toppings/Jalepno.png" id="2_jncgu"]
+
+[node name="Jalepno" type="Node2D"]
+script = ExtResource("1_d3d8w")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jncgu")

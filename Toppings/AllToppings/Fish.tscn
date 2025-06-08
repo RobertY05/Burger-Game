@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2olnwseiste8"]
+
+[ext_resource type="Script" uid="uid://bhobde4oa0uhh" path="res://Toppings/AllToppings/fish.gd" id="1_jigyd"]
+[ext_resource type="Texture2D" uid="uid://d3kda2rld0bs3" path="res://Textures/Toppings/Fish.png" id="2_34ntf"]
+
+[node name="Fish" type="Node2D"]
+script = ExtResource("1_jigyd")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_34ntf")

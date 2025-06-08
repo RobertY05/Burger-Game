@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy6uxwrcwf17f"]
+
+[ext_resource type="Script" uid="uid://b51uhmc56vqcw" path="res://Toppings/AllToppings/goat_cheese.gd" id="1_urbps"]
+[ext_resource type="Texture2D" uid="uid://c7s7kf2ysljen" path="res://Textures/Toppings/GoatCheese.png" id="2_r6vme"]
+
+[node name="GoatCheese" type="Node2D"]
+script = ExtResource("1_urbps")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r6vme")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6sshi4t66n2w"]
+
+[ext_resource type="Script" uid="uid://bu3jpfqtnys0o" path="res://Toppings/AllToppings/ants.gd" id="1_xvw5j"]
+[ext_resource type="Texture2D" uid="uid://bqhcvs8f4obj6" path="res://Textures/Toppings/Ants.png" id="2_purus"]
+
+[node name="Ants" type="Node2D"]
+script = ExtResource("1_xvw5j")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_purus")

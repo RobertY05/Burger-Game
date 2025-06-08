@@ -1,0 +1,215 @@
+[gd_scene load_steps=39 format=3 uid="uid://d3j1dl2ybnjjj"]
+
+[ext_resource type="Script" uid="uid://mtnq6e3yu5a7" path="res://GameController/game_controller.gd" id="1_mgxxk"]
+[ext_resource type="PackedScene" uid="uid://7xe8vsis0d0n" path="res://Cards/CardSelector.tscn" id="2_5usk2"]
+[ext_resource type="PackedScene" uid="uid://d0kuox7vq8mt2" path="res://Toppings/AllToppings/Egg.tscn" id="2_v428q"]
+[ext_resource type="PackedScene" uid="uid://c4ypahggosmve" path="res://Toppings/AllToppings/Feta.tscn" id="3_67v4m"]
+[ext_resource type="PackedScene" uid="uid://dwac1rqiv110l" path="res://Toppings/AllToppings/Bacon.tscn" id="4_3rmcx"]
+[ext_resource type="PackedScene" uid="uid://brk57m4w3gxy0" path="res://Camera/Camera.tscn" id="5_lcdit"]
+[ext_resource type="PackedScene" uid="uid://360i6iduej8e" path="res://Toppings/AllToppings/Onion.tscn" id="5_ssl07"]
+[ext_resource type="PackedScene" uid="uid://cioqrlkwsv2nw" path="res://Burger/Burger.tscn" id="5_wjggv"]
+[ext_resource type="PackedScene" uid="uid://04k6huhviq6w" path="res://Toppings/AllToppings/SwissCheese.tscn" id="6_4omeg"]
+[ext_resource type="Script" uid="uid://pufjqsouthhk" path="res://UI/reactive_label.gd" id="7_dypit"]
+[ext_resource type="PackedScene" uid="uid://dbbfd8b61wexo" path="res://Cards/Shop.tscn" id="7_fhpwh"]
+[ext_resource type="PackedScene" uid="uid://bcfy1wnv3q5mm" path="res://Toppings/AllToppings/Pickle.tscn" id="7_oxaob"]
+[ext_resource type="PackedScene" uid="uid://dmowiqm1dpxis" path="res://Toppings/AllToppings/Tomato.tscn" id="8_cn4x2"]
+[ext_resource type="PackedScene" uid="uid://ckuti2glqq5kf" path="res://UI/DoneButton.tscn" id="9_fhpwh"]
+[ext_resource type="PackedScene" uid="uid://cn5v34u0elqv6" path="res://Toppings/AllToppings/Cheddar.tscn" id="9_ixtgu"]
+[ext_resource type="PackedScene" uid="uid://b023mr3l7wl7n" path="res://Toppings/AllToppings/Cucumber.tscn" id="10_ty2i1"]
+[ext_resource type="PackedScene" uid="uid://r4yrrf27idpq" path="res://Toppings/AllToppings/BeefPatty.tscn" id="11_bgah3"]
+[ext_resource type="PackedScene" uid="uid://c86sbtmyxlmlo" path="res://Toppings/AllToppings/VeggiePatty.tscn" id="12_i4bi8"]
+[ext_resource type="PackedScene" uid="uid://cydmjxduulf73" path="res://Toppings/AllToppings/TinyHorse.tscn" id="13_3rmcx"]
+[ext_resource type="PackedScene" uid="uid://b6sshi4t66n2w" path="res://Toppings/AllToppings/Ants.tscn" id="14_4omeg"]
+[ext_resource type="PackedScene" uid="uid://be6umo8gt3b3o" path="res://Toppings/AllToppings/Ketchup.tscn" id="15_oxaob"]
+[ext_resource type="PackedScene" uid="uid://c81l6joyw7nd" path="res://Toppings/AllToppings/Cookie.tscn" id="16_cn4x2"]
+[ext_resource type="PackedScene" uid="uid://dv84yqtwreiix" path="res://Toppings/AllToppings/Lettuce.tscn" id="17_ixtgu"]
+[ext_resource type="Texture2D" uid="uid://bcjqxeq5iqu75" path="res://Textures/IntroComic.png" id="17_nd2ao"]
+[ext_resource type="Texture2D" uid="uid://0wk4tqfgmcka" path="res://Textures/OverComic.png" id="18_8lnp7"]
+[ext_resource type="PackedScene" uid="uid://bv3tql1s43hcc" path="res://Toppings/AllToppings/GoldFoil.tscn" id="18_ty2i1"]
+[ext_resource type="PackedScene" uid="uid://02807epxnm13" path="res://Toppings/AllToppings/Olive.tscn" id="19_bgah3"]
+[ext_resource type="PackedScene" uid="uid://c1ayd188w6nvl" path="res://Toppings/AllToppings/Chicken.tscn" id="20_i4bi8"]
+[ext_resource type="PackedScene" uid="uid://b2olnwseiste8" path="res://Toppings/AllToppings/Fish.tscn" id="21_1mq2v"]
+[ext_resource type="AudioStream" uid="uid://6vq8e6ln0w2e" path="res://Sounds/CardSound.wav" id="21_v428q"]
+[ext_resource type="AudioStream" uid="uid://dytxftgmp65sc" path="res://Sounds/WinSound.wav" id="22_3rmcx"]
+[ext_resource type="PackedScene" uid="uid://c5yf8nv4tt83" path="res://Toppings/AllToppings/Jalepeno.tscn" id="22_lpfio"]
+[ext_resource type="AudioStream" uid="uid://hmutg4flp8nl" path="res://Sounds/LoseSound.wav" id="23_3rmcx"]
+[ext_resource type="PackedScene" uid="uid://datdvkdmf2byv" path="res://Toppings/AllToppings/OnionRings.tscn" id="23_y4dlp"]
+[ext_resource type="PackedScene" uid="uid://cy6uxwrcwf17f" path="res://Toppings/AllToppings/GoatCheese.tscn" id="24_x2p8m"]
+[ext_resource type="PackedScene" uid="uid://b4fk7tf5pmqwb" path="res://Toppings/AllToppings/Provolone.tscn" id="25_hw6m4"]
+[ext_resource type="PackedScene" uid="uid://magisl1mawot" path="res://Toppings/AllToppings/MontereyJack.tscn" id="26_otynb"]
+[ext_resource type="PackedScene" uid="uid://c14djnv7s8hdl" path="res://Toppings/AllToppings/Sand.tscn" id="27_gi0ha"]
+
+[node name="GameController" type="Node2D"]
+script = ExtResource("1_mgxxk")
+all_toppings = Array[PackedScene]([ExtResource("2_v428q"), ExtResource("3_67v4m"), ExtResource("4_3rmcx"), ExtResource("5_ssl07"), ExtResource("6_4omeg"), ExtResource("7_oxaob"), ExtResource("8_cn4x2"), ExtResource("9_ixtgu"), ExtResource("10_ty2i1"), ExtResource("11_bgah3"), ExtResource("12_i4bi8"), ExtResource("13_3rmcx"), ExtResource("14_4omeg"), ExtResource("15_oxaob"), ExtResource("16_cn4x2"), ExtResource("17_ixtgu"), ExtResource("18_ty2i1"), ExtResource("19_bgah3"), ExtResource("20_i4bi8"), ExtResource("21_1mq2v"), ExtResource("22_lpfio"), ExtResource("23_y4dlp"), ExtResource("24_x2p8m"), ExtResource("25_hw6m4"), ExtResource("26_otynb"), ExtResource("27_gi0ha")])
+_burger_scene = ExtResource("5_wjggv")
+_done_button_scene = ExtResource("9_fhpwh")
+
+[node name="Camera" parent="." instance=ExtResource("5_lcdit")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
+
+[node name="CardSelector" parent="Camera/CanvasLayer" instance=ExtResource("2_5usk2")]
+
+[node name="Shop" parent="Camera/CanvasLayer" instance=ExtResource("7_fhpwh")]
+
+[node name="Hud" type="Node2D" parent="Camera"]
+
+[node name="BurgerNumber" type="Label" parent="Camera/Hud"]
+offset_left = -847.0
+offset_top = -450.0
+offset_right = -121.0
+offset_bottom = -372.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "MIN POINTS:"
+vertical_alignment = 1
+
+[node name="TargetLabel" type="Label" parent="Camera/Hud"]
+offset_left = -847.0
+offset_top = -496.0
+offset_right = -121.0
+offset_bottom = -418.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "BURGER 1/3"
+vertical_alignment = 1
+
+[node name="RateLabel" type="Label" parent="Camera/Hud"]
+offset_left = -847.0
+offset_top = -406.0
+offset_right = -81.0
+offset_bottom = -328.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1$ / 0 POINTS EXTRA"
+vertical_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="Camera/Hud"]
+offset_left = -847.0
+offset_top = -323.0
+offset_right = -121.0
+offset_bottom = -245.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "POINTS: 0"
+vertical_alignment = 1
+script = ExtResource("7_dypit")
+
+[node name="MoneyLabel" type="Label" parent="Camera/Hud"]
+offset_left = -847.0
+offset_top = -279.0
+offset_right = -81.0
+offset_bottom = -201.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "MONEY: 0"
+vertical_alignment = 1
+script = ExtResource("7_dypit")
+
+[node name="CardsLabel" type="Label" parent="Camera/Hud"]
+offset_left = -920.0
+offset_top = -235.0
+offset_right = -154.0
+offset_bottom = -157.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "CARDS LEFT: 0"
+vertical_alignment = 1
+script = ExtResource("7_dypit")
+
+[node name="IntroComic" type="Sprite2D" parent="."]
+position = Vector2(0, 1200)
+scale = Vector2(0.829531, 0.809985)
+texture = ExtResource("17_nd2ao")
+
+[node name="LoseComic" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 1200)
+scale = Vector2(0.829531, 0.809985)
+texture = ExtResource("18_8lnp7")
+
+[node name="RulesLabel" type="Label" parent="."]
+offset_left = 382.0
+offset_top = -511.0
+offset_right = 923.0
+offset_bottom = -254.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/paragraph_spacing = 20
+theme_override_font_sizes/font_size = 35
+text = "Play cards to earn points
+Make the quota or you're fired
+Points earned past the quota will make you extra money
+Don't get fired."
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_dypit")
+
+[node name="EasterEgg" type="Label" parent="."]
+offset_left = 382.0
+offset_top = -796.0
+offset_right = 923.0
+offset_bottom = -539.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/paragraph_spacing = 20
+theme_override_font_sizes/font_size = 35
+text = "Keep up the good work!!!
+-Management"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_dypit")
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 310.0
+offset_top = -1488.0
+offset_right = 923.0
+offset_bottom = -955.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/paragraph_spacing = 20
+theme_override_font_sizes/font_size = 35
+text = "-----Credits-----
+Burger Game
+A game by:
+Robert Yan
+Alex Hristodorescu
+
+Free sounds provided by Pixabay
+Thank you for getting so far!
+-----Credits-----"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_dypit")
+
+[node name="Credits2" type="Label" parent="."]
+offset_left = 310.0
+offset_top = -2161.0
+offset_right = 923.0
+offset_bottom = -1628.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/paragraph_spacing = 20
+theme_override_font_sizes/font_size = 35
+text = "Bruh"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_dypit")
+
+[node name="CardSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_v428q")
+volume_db = -5.0
+max_polyphony = 4
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_3rmcx")
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_3rmcx")
+
+[connection signal="card_played" from="Camera/CanvasLayer/CardSelector" to="." method="_on_card_played"]

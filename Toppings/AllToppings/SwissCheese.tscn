@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://04k6huhviq6w"]
+
+[ext_resource type="Script" uid="uid://3fnqntoihnwh" path="res://Toppings/AllToppings/swiss.gd" id="1_tylc2"]
+[ext_resource type="Texture2D" uid="uid://bsu4hg7hwftu7" path="res://Textures/Toppings/Swiss.png" id="2_ps11x"]
+
+[node name="Swiss" type="Node2D"]
+script = ExtResource("1_tylc2")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ps11x")

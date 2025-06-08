@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4gcxmpvhy75g"]
+
+[ext_resource type="Script" uid="uid://drfmya8gr44bl" path="res://Cards/card.gd" id="1_6ma3f"]
+[ext_resource type="Texture2D" uid="uid://ba3o555ttjhhr" path="res://Textures/CardBack.png" id="2_5u7pk"]
+[ext_resource type="Texture2D" uid="uid://bfsh4is6eqop6" path="res://Textures/Toppings/BeefPatty.png" id="3_5u7pk"]
+
+[node name="Card" type="Node2D"]
+script = ExtResource("1_6ma3f")
+
+[node name="CardBack" type="Sprite2D" parent="."]
+texture = ExtResource("2_5u7pk")
+
+[node name="CardImage" type="Sprite2D" parent="."]
+position = Vector2(0, -81)
+texture = ExtResource("3_5u7pk")
+
+[node name="CardName" type="Label" parent="."]
+offset_left = -81.0
+offset_top = -142.0
+offset_right = 82.0
+offset_bottom = -119.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "TOPPING"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CardType" type="Label" parent="."]
+offset_left = -81.0
+offset_top = -48.0
+offset_right = 82.0
+offset_bottom = -25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.266667, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 15
+text = "TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CardDescription" type="Label" parent="."]
+offset_left = -91.0
+offset_top = -21.0
+offset_right = 90.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -7
+theme_override_constants/paragraph_spacing = 3
+text = "Gain 1 point for every card played
+suh my dih asdf asdf asdf asdf asdf asdf asd fasdf asdf as
+asdf asdf asdf asdf asdf asd fasfasd fasd fasf asd fasd f
+as dfasdf asdf asdf asdf asdf "
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 4

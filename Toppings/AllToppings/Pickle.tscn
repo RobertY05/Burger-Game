@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcfy1wnv3q5mm"]
+
+[ext_resource type="Script" uid="uid://clqm1diqfdmx1" path="res://Toppings/AllToppings/pickle.gd" id="1_g11yr"]
+[ext_resource type="Texture2D" uid="uid://chi0byb5drhb7" path="res://Textures/Toppings/Pickle.png" id="2_hih6x"]
+
+[node name="Pickle" type="Node2D"]
+script = ExtResource("1_g11yr")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hih6x")

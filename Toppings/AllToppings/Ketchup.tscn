@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://be6umo8gt3b3o"]
+
+[ext_resource type="Script" uid="uid://bdxnm1wkvrx3q" path="res://Toppings/AllToppings/ketchup.gd" id="1_3nely"]
+[ext_resource type="Texture2D" uid="uid://bfg0b701yfymx" path="res://Textures/Toppings/Ketchup.png" id="2_3nely"]
+
+[node name="Ketchup" type="Node2D"]
+script = ExtResource("1_3nely")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3nely")

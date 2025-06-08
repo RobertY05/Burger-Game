@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwac1rqiv110l"]
+
+[ext_resource type="Script" uid="uid://c864v036tjw8d" path="res://Toppings/AllToppings/bacon.gd" id="1_1j87a"]
+[ext_resource type="Texture2D" uid="uid://btyny5qlgcvsw" path="res://Textures/Toppings/Bacon.png" id="2_qr1n5"]
+
+[node name="Bacon" type="Node2D"]
+script = ExtResource("1_1j87a")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qr1n5")

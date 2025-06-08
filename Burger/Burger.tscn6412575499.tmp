@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cioqrlkwsv2nw"]
+
+[ext_resource type="Texture2D" uid="uid://c3ck4wjii62sn" path="res://Temp/TempBottomBun.png" id="1_1qria"]
+[ext_resource type="Script" uid="uid://bx0jnpjnt5nk" path="res://Burger/burger.gd" id="1_ly3xb"]
+[ext_resource type="PackedScene" uid="uid://nf83ewavsn6x" path="res://Toppings/ToppingVisual.tscn" id="2_nw8nv"]
+
+[node name="Burger" type="Node2D"]
+script = ExtResource("1_ly3xb")
+_topping_scene = ExtResource("2_nw8nv")
+
+[node name="BottomBun" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("1_1qria")
+offset = Vector2(0, 5)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c86sbtmyxlmlo"]
+
+[ext_resource type="Script" uid="uid://b4iimvxwsmgb0" path="res://Toppings/AllToppings/veggie_patty.gd" id="1_yqf6y"]
+[ext_resource type="Texture2D" uid="uid://ihxydhur21df" path="res://Textures/Toppings/VeggiePatty.png" id="2_j1tr1"]
+
+[node name="VeggiePatty" type="Node2D"]
+script = ExtResource("1_yqf6y")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j1tr1")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://360i6iduej8e"]
+
+[ext_resource type="Script" uid="uid://c7v1f6wp3bl4n" path="res://Toppings/AllToppings/onion.gd" id="1_fk7mc"]
+[ext_resource type="Texture2D" uid="uid://bb7fvruedc3h7" path="res://Textures/Toppings/Onion.png" id="2_qtxe8"]
+
+[node name="Onion" type="Node2D"]
+script = ExtResource("1_fk7mc")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qtxe8")

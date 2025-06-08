@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ayd188w6nvl"]
+
+[ext_resource type="Script" uid="uid://c8i5o1ab5tlbw" path="res://Toppings/AllToppings/chicken.gd" id="1_k46ke"]
+[ext_resource type="Texture2D" uid="uid://coi0plnhmdrko" path="res://Textures/Toppings/Chicken.png" id="2_yigf3"]
+
+[node name="Chicken" type="Node2D"]
+script = ExtResource("1_k46ke")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yigf3")

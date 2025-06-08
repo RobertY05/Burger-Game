@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv84yqtwreiix"]
+
+[ext_resource type="Script" uid="uid://d3l32fqqng60v" path="res://Toppings/AllToppings/lettuce.gd" id="1_he45r"]
+[ext_resource type="Texture2D" uid="uid://bta2kl23uc3tm" path="res://Textures/Toppings/Lettuce.png" id="2_bu57o"]
+
+[node name="Lettuce" type="Node2D"]
+script = ExtResource("1_he45r")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bu57o")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b023mr3l7wl7n"]
+
+[ext_resource type="Script" uid="uid://dvxnuro0xut3h" path="res://Toppings/AllToppings/cucumber.gd" id="1_pgh0y"]
+[ext_resource type="Texture2D" uid="uid://xoc2t6cnihwt" path="res://Textures/Toppings/Cucumber.png" id="2_3lgio"]
+
+[node name="Cucumber" type="Node2D"]
+script = ExtResource("1_pgh0y")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3lgio")
