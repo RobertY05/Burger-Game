@@ -5,12 +5,13 @@ func _init():
 	topping_type = "Protein"
 	height = 10
 	rarity = tiers.UNCOMMON
-	cost = 30
+	cost = 15
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	for i in range(topping_list.size()):
 		if topping_list[i].topping_type == "Other":
 			game_controller.add_points(75)
+			topping_list[i].flash()
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass

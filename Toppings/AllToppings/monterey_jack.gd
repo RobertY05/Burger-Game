@@ -7,7 +7,7 @@ func _init():
 	topping_type = "Cheese"
 	height = 5
 	rarity = tiers.COMMON
-	cost = 40
+	cost = 30
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.add_points(times_played * 5)

@@ -10,11 +10,10 @@ func _init():
 	cost = 8
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
-	game_controller.add_points(100 - times_played * 15)
-	times_played += 1
+	game_controller.add_points(115 - times_played * 15)
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
-	pass
+	times_played += 1
 
 func get_description():
-	return "+100 points when graded. \n Lose 15 points each time this card was played previously. \n You will lose " + str(times_played * 40) + " points."
+	return "+115 points when graded. \n Lose 15 points each time this card was played previously when graded. \n You will lose " + str((times_played + 1) * 15) + " points."

@@ -31,6 +31,10 @@ func generate():
 				continue
 			if topping.rarity == topping.tiers.RARE and randi_range(1,3) == 1:
 				continue
+			
+			if topping.cost > _game_controller_ref.get_money() and randi_range(1, 2):
+				continue
+				
 			break
 		var new_seller = _seller_scene.instantiate()
 		add_child(new_seller)

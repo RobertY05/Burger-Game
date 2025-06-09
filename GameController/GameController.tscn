@@ -118,6 +118,19 @@ text = "CARDS LEFT: 0"
 vertical_alignment = 1
 script = ExtResource("7_dypit")
 
+[node name="ModeLabel" type="Label" parent="Camera/Hud"]
+visible = false
+offset_left = -848.0
+offset_top = -162.0
+offset_right = -272.0
+offset_bottom = -45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "You will SHUFFLE the next 2 cards you play"
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_dypit")
+
 [node name="IntroComic" type="Sprite2D" parent="."]
 position = Vector2(0, 1200)
 scale = Vector2(0.829531, 0.809985)

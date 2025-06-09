@@ -15,4 +15,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.draw_card(1)
 
 func get_description():
-	return "+20 points when played. \n Draw a card."
+	return "+15 points when played. \n Draw a card."

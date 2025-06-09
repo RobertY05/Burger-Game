@@ -5,7 +5,7 @@ func _init():
 	topping_type = "Protein"
 	height = 1
 	rarity = tiers.RARE
-	cost = 35
+	cost = 40
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	topping_list.shuffle()

@@ -27,6 +27,7 @@ func calculate(topping_list : Array[Topping], game_controller : GameController):
 	
 	for i in range(eat_to, topping_list.size()):
 		topping_list[i].desired_position.y += offset
+	game_controller.burger.top_bun_desired_y += offset
 	
 	if eat_to == 0 and game_controller.burger.calculation_idx != 0:
 		desired_position.y += game_controller.burger.peek_offset
@@ -38,4 +39,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "Eats all 'Vegetable' type cards that it can stand on when graded. \n +10 points for every 'Vegetable' type card it has eaten this run. \n Currently at " + str(points_to_add) + " points."
+	return "Removes all 'Vegetable' type toppings immediately below the horse when graded. \n +10 points for every 'Vegetable' type removed this run. \n Currently at " + str(points_to_add) + " points."

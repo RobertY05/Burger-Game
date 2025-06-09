@@ -5,7 +5,7 @@ func _init():
 	topping_type = "Vegetable"
 	height = 3
 	rarity = tiers.COMMON
-	cost = 8
+	cost = 7
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.draw_card(3)

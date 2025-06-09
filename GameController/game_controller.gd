@@ -15,6 +15,7 @@ extends Node2D
 @onready var _points_label = $Camera/Hud/PointsLabel
 @onready var _money_label = $Camera/Hud/MoneyLabel
 @onready var _cards_label = $Camera/Hud/CardsLabel
+@onready var _mode_label = $Camera/Hud/ModeLabel
 
 @onready var _card_sound = $CardSound
 
@@ -29,6 +30,8 @@ var _done_button_offset_y = 100
 var _comic_position = Vector2(0, 1200)
 
 var _show_tutorial = true
+
+var _need_button = true
 
 # -----run variables------
 
@@ -96,6 +99,11 @@ func set_money(new_money : int):
 		_money = new_money
 		_money_label.change_text("MONEY: " + str(new_money))
 
+func set_mode(mode, times = 1):
+	play_mode = mode
+	play_mode_count = times
+	_update_mode_label()
+
 # sets variables to default, starts the game
 func reset_game():
 	set_points(0)
@@ -116,9 +124,6 @@ func reset_game():
 		if probe.topping_name == "Cheddar":
 			for i in range(3):
 				_deck.push_back(topping.instantiate())
-		if probe.topping_name == "Cucumber":
-			for i in range(1):
-				_deck.push_back(topping.instantiate())
 		if probe.topping_name == "Lettuce":
 			for i in range(2):
 				_deck.push_back(topping.instantiate())
@@ -137,7 +142,6 @@ func reset_game():
 
 # resets your draw pile, calculates the difficulties, etc.
 func start_day():
-	play_mode = modes.PLAY
 	play_mode_count = 0
 	
 	_shop.dismiss()
@@ -152,7 +156,7 @@ func start_day():
 	_heat += 1
 	
 	_cur_target = 0
-	_updateburger_number()
+	_update_burger_number()
 	_update_card_label()
 	_update_target_label()
 	_new_burger()
@@ -169,10 +173,11 @@ func _new_burger():
 	for i in range(_hand_size):
 		draw_card()
 	
-	_create_done_button(_grade_burger)
+	_need_button = true
 
 func _grade_burger():
 	burger.calculate()
+	set_mode(modes.PLAY)
 	_card_selector.enabled = false
 
 func _close_shop():
@@ -208,14 +213,14 @@ func _on_card_played(topping):
 		_draw_pile.insert(randi_range(0, _draw_pile.size()), topping)
 		play_mode_count -= 1
 		if play_mode_count == 0:
-			play_mode = modes.PLAY
+			set_mode(modes.PLAY)
 		_update_card_label()
 		return
 	elif play_mode == modes.BOTTOM:
 		_draw_pile.insert(0, topping)
 		play_mode_count -= 1
 		if play_mode_count == 0:
-			play_mode = modes.PLAY
+			set_mode(modes.PLAY)
 		_update_card_label()
 		return
 	
@@ -245,14 +250,14 @@ func _on_calculation_done() -> void:
 	_cur_target += 1
 	if _cur_target < _target_scores.size():
 		_new_burger()
-		_updateburger_number()
+		_update_burger_number()
 	else:
 		_card_selector.empty(false)
 		_shop.generate()
 		
 		_create_done_button(_close_shop)
 
-func _updateburger_number():
+func _update_burger_number():
 	burger_number.text = "BURGER " + str(_cur_target + 1) + "/3"
 
 func _update_target_label():
@@ -261,6 +266,17 @@ func _update_target_label():
 
 func _update_card_label():
 	_cards_label.change_text("CARDS LEFT: " + str(_draw_pile.size()))
+
+func _update_mode_label():
+	if play_mode == modes.PLAY:
+		_mode_label.hide()
+	else:
+		_mode_label.show()
+	
+	if play_mode == modes.SHUFFLE:
+		_mode_label.text = "The next " + str(play_mode_count) + " cards you play will be shuffled into your draw pile. \nYou will NOT play them onto your burger."
+	elif play_mode == modes.BOTTOM:
+		_mode_label.text = "The next " + str(play_mode_count) + " cards you play will be shuffled into your draw pile. \nYou will NOT play them onto your burger."
 
 func _ready():
 	var cheese_count = 0
@@ -294,5 +310,8 @@ func _process(delta):
 	if burger != null and burger.global_position.x < 0 and burger.global_position.x > -3:
 		burger.global_position.x = 0
 		_card_selector.enabled = true
+		if _need_button:
+			_need_button = false
+			_create_done_button(_grade_burger)
 
 	# debug:

@@ -5,11 +5,13 @@ func _init():
 	topping_type = "Other"
 	height = 3
 	rarity = tiers.UNCOMMON
-	cost = 45
+	cost = 25
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	var my_idx = topping_list.find(self)
 	game_controller.set_money(game_controller.get_money() + my_idx)
+	for i in range(my_idx):
+		topping_list[i].flash()
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass

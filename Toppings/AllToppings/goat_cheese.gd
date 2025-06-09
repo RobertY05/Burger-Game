@@ -5,7 +5,7 @@ func _init():
 	topping_type = "Cheese"
 	height = 10
 	rarity = tiers.RARE
-	cost = 40
+	cost = 25
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	if randi_range(1, 3) == 1:
