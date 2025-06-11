@@ -41,14 +41,14 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardDescription" type="Label" parent="."]
-offset_left = -87.0
+offset_left = -91.0
 offset_top = -21.0
-offset_right = 87.0
+offset_right = 90.0
 offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -7
 theme_override_constants/paragraph_spacing = 3
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 13
 text = "Gain 1 point for every card played
 suh my dih asdf asdf asdf asdf asdf asdf asd fasdf asdf as
 asdf asdf asdf asdf asdf asd fasfasd fasd fasf asd fasd f 1892347921349812479821347821748398217347981273487238917234"

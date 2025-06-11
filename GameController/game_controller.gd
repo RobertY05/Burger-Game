@@ -16,6 +16,7 @@ extends Node2D
 @onready var _money_label = $Camera/Hud/MoneyLabel
 @onready var _cards_label = $Camera/Hud/CardsLabel
 @onready var _mode_label = $Camera/Hud/ModeLabel
+@onready var _deck_view_button = $Camera/Hud/DeckViewButton
 
 @onready var _card_sound = $CardSound
 
@@ -40,7 +41,7 @@ var _heat = 0
 
 var _money = 0
 
-var _deck = []
+var deck = []
 
 var _hand_size = 5
 
@@ -52,7 +53,7 @@ var _hand_size = 5
 var _points = 0
 
 # list of toppings that represent the draw pile
-var _draw_pile = []
+var draw_pile = []
 
 # what to do with the next card, freely mutated
 # "play" 		-> add next topping
@@ -113,23 +114,28 @@ func reset_game():
 	_camera.global_position = Vector2.ZERO
 	_camera.desired_position = Vector2.ZERO
 	
-	_deck = []
+	deck = []
 	# temp reset...
 	for topping in all_toppings:
 		var probe = topping.instantiate()
 		
 		if probe.topping_name == "Beef Patty":
 			for i in range(2):
-				_deck.push_back(topping.instantiate())
+				deck.push_back(topping.instantiate())
 		if probe.topping_name == "Cheddar":
 			for i in range(3):
-				_deck.push_back(topping.instantiate())
+				deck.push_back(topping.instantiate())
 		if probe.topping_name == "Lettuce":
 			for i in range(2):
-				_deck.push_back(topping.instantiate())
+				deck.push_back(topping.instantiate())
 		if probe.topping_name == "Ketchup":
 			for i in range(1):
-				_deck.push_back(topping.instantiate())
+				deck.push_back(topping.instantiate())
+		
+		if probe.topping_name == "Monterey Jack":
+			for i in range(500):
+				deck.push_back(topping.instantiate())
+		
 		probe.queue_free()
 	
 	set_money(0)
@@ -146,8 +152,11 @@ func start_day():
 	
 	_shop.dismiss()
 	
-	_draw_pile = _deck.duplicate()
-	_draw_pile.shuffle()
+	_card_selector.viewing = false
+	_deck_view_button.toggle(false)
+	
+	draw_pile = deck.duplicate()
+	draw_pile.shuffle()
 	
 	for i in range(_target_scores.size()):
 		_target_scores[i] += _target_scores[i] * 0.05 + _heat * 4
@@ -194,14 +203,18 @@ func _create_done_button(fun, word = "Done"):
 
 # permanently acquire a card
 func get_card(topping):
-	_deck.push_back(topping)
+	deck.push_back(topping)
+	draw_pile.push_back(topping)
+	_update_card_label()
+	if _card_selector.viewing:
+		_card_selector.add_card(topping)
 
-# draws a topping from _draw_pile and generates a card, does nothing if deck is empty
+# draws a topping from draw_pile and generates a card, does nothing if deck is empty
 func draw_card(x = 1):
 	var play_sound = false
 	for i in range(x):
-		if _draw_pile.size() > 0:
-			_card_selector.make_card(_draw_pile.pop_back())
+		if draw_pile.size() > 0:
+			_card_selector.add_card(draw_pile.pop_back())
 			_update_card_label()
 			play_sound = true
 	if play_sound:
@@ -210,14 +223,14 @@ func draw_card(x = 1):
 
 func _on_card_played(topping):
 	if play_mode == modes.SHUFFLE:
-		_draw_pile.insert(randi_range(0, _draw_pile.size()), topping)
+		draw_pile.insert(randi_range(0, draw_pile.size()), topping)
 		play_mode_count -= 1
 		if play_mode_count == 0:
 			set_mode(modes.PLAY)
 		_update_card_label()
 		return
 	elif play_mode == modes.BOTTOM:
-		_draw_pile.insert(0, topping)
+		draw_pile.insert(0, topping)
 		play_mode_count -= 1
 		if play_mode_count == 0:
 			set_mode(modes.PLAY)
@@ -236,6 +249,7 @@ func _on_calculation_done() -> void:
 		$LoseComic.show()
 		$LoseSound.play()
 		_card_selector.enabled = false
+		_card_selector.viewing = false
 		_create_done_button(reset_game, "Ok")
 		
 		_camera.desired_position = _comic_position
@@ -253,7 +267,11 @@ func _on_calculation_done() -> void:
 		_update_burger_number()
 	else:
 		_card_selector.empty(false)
+		_card_selector.viewing = false
+		_deck_view_button.toggle(false)
 		_shop.generate()
+		draw_pile = deck.duplicate()
+		_update_card_label()
 		
 		_create_done_button(_close_shop)
 
@@ -265,7 +283,7 @@ func _update_target_label():
 	_rate_label.text = "1$ / " + str(int(_target_scores[_cur_target] * _money_percent)) + " POINTS EXTRA"
 
 func _update_card_label():
-	_cards_label.change_text("CARDS LEFT: " + str(_draw_pile.size()))
+	_cards_label.change_text("CARDS LEFT: " + str(draw_pile.size()))
 
 func _update_mode_label():
 	if play_mode == modes.PLAY:
@@ -274,9 +292,9 @@ func _update_mode_label():
 		_mode_label.show()
 	
 	if play_mode == modes.SHUFFLE:
-		_mode_label.text = "The next " + str(play_mode_count) + " cards you play will be shuffled into your draw pile. \nYou will NOT play them onto your burger."
+		_mode_label.text = "SHUFFLE NEXT " + str(play_mode_count) + " CARDS"
 	elif play_mode == modes.BOTTOM:
-		_mode_label.text = "The next " + str(play_mode_count) + " cards you play will be shuffled into your draw pile. \nYou will NOT play them onto your burger."
+		_mode_label.text = "PLACE NEXT " + str(play_mode_count) + " CARDS AT THE BOTTOM OF YOUR DRAW PILE"
 
 func _ready():
 	var cheese_count = 0
@@ -285,6 +303,7 @@ func _ready():
 	var other_count = 0
 	for i in all_toppings:
 		var probe = i.instantiate()
+		probe.reset()
 		if probe.topping_type == "Cheese":
 			cheese_count += 1
 		elif probe.topping_type == "Vegetable":
@@ -293,6 +312,7 @@ func _ready():
 			protein_count += 1
 		else:
 			other_count += 1
+		
 		probe.queue_free()
 	print("Cheese: ", cheese_count)
 	print("Vegetable: ", vegetable_count)
@@ -314,4 +334,7 @@ func _process(delta):
 			_need_button = false
 			_create_done_button(_grade_burger)
 
-	# debug:
+
+func _view_deck() -> void:
+	_deck_view_button.toggle()
+	_card_selector.toggle_view()

@@ -35,6 +35,9 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 func get_description():
 	return "gain 1 point for every topping played below this topping\n if you are playing the real game you should not see this!!!"
 
+func reset():
+	return
+
 func flash():
 	modulate = Color(4, 4, 4)
 

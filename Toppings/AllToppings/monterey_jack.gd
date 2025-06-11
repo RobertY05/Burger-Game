@@ -16,4 +16,7 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	times_played += 1
 
 func get_description():
-	return "+5 points for every 'Monterey Jack' played this run. \n Will award at least " + str(times_played * 5) + " points." 
+	return "+5 points for every 'Monterey Jack' played this run. \n 'Monterey Jack' earns " + str(times_played * 5) + " points." 
+
+func reset():
+	times_played = 0

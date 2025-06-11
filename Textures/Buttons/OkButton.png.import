@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://beim6upnlogk5"
-path="res://.godot/imported/OkButton.png-b614afd5fbfd5dd23791358ef4e3ada3.ctex"
+path="res://.godot/imported/OkButton.png-874c9c2042a219192519e365d3e5fe57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/OkButton.png"
-dest_files=["res://.godot/imported/OkButton.png-b614afd5fbfd5dd23791358ef4e3ada3.ctex"]
+source_file="res://Textures/Buttons/OkButton.png"
+dest_files=["res://.godot/imported/OkButton.png-874c9c2042a219192519e365d3e5fe57.ctex"]
 
 [params]
 

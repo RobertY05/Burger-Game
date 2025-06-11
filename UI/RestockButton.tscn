@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://77rrmg6lckmu"]
+
+[ext_resource type="Script" uid="uid://glqtfa880pae" path="res://UI/restock_button.gd" id="1_m7a7p"]
+[ext_resource type="Texture2D" uid="uid://d4l12386qgovs" path="res://Textures/Buttons/RestockButton.png" id="1_yjxt1"]
+
+[node name="RestockButton" type="Sprite2D"]
+texture = ExtResource("1_yjxt1")
+script = ExtResource("1_m7a7p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -253.0
+offset_top = 61.0
+offset_right = 252.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "100 MONIES"
+horizontal_alignment = 1
+vertical_alignment = 1

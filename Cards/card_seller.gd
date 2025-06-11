@@ -12,12 +12,19 @@ var _lerp_speed = 0.4
 
 var _cost = 0
 var _purchased = false
+var _dead = false
 
 func setup(game_controller, topping):
 	_game_controller_ref = game_controller
 	_card.setup(topping)
 	_cost = topping.cost
 	$PriceLabel.text = str(topping.cost) + " MONIES"
+
+func kill():
+	if not _dead:
+		$Card.play()
+		$PriceLabel.hide()
+		_dead = true
 
 func _process(delta):
 	var box = Rect2(global_position - _card_size / 2, _card_size)
@@ -34,3 +41,5 @@ func _process(delta):
 	
 	if _card != null:
 		_card.scale = lerp(_card.scale, _desired_scale, _lerp_speed)
+	else:
+		queue_free()

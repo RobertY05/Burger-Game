@@ -27,6 +27,9 @@ func setup(topping):
 	$CardType.text = topping.topping_type
 	$CardDescription.text = topping.get_description()
 
+func update_description():
+	$CardDescription.text = _topping.get_description()
+
 # starts the animation and returns the stored topping
 func play():
 	_dying = true

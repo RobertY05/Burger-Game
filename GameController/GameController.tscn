@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d3j1dl2ybnjjj"]
+[gd_scene load_steps=40 format=3 uid="uid://d3j1dl2ybnjjj"]
 
 [ext_resource type="Script" uid="uid://mtnq6e3yu5a7" path="res://GameController/game_controller.gd" id="1_mgxxk"]
 [ext_resource type="PackedScene" uid="uid://7xe8vsis0d0n" path="res://Cards/CardSelector.tscn" id="2_5usk2"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://b4fk7tf5pmqwb" path="res://Toppings/AllToppings/Provolone.tscn" id="25_hw6m4"]
 [ext_resource type="PackedScene" uid="uid://magisl1mawot" path="res://Toppings/AllToppings/MontereyJack.tscn" id="26_otynb"]
 [ext_resource type="PackedScene" uid="uid://c14djnv7s8hdl" path="res://Toppings/AllToppings/Sand.tscn" id="27_gi0ha"]
+[ext_resource type="PackedScene" uid="uid://cimbtoeb3boxy" path="res://UI/DeckViewButton.tscn" id="34_gi0ha"]
 
 [node name="GameController" type="Node2D"]
 script = ExtResource("1_mgxxk")
@@ -108,9 +109,9 @@ vertical_alignment = 1
 script = ExtResource("7_dypit")
 
 [node name="CardsLabel" type="Label" parent="Camera/Hud"]
-offset_left = -920.0
+offset_left = -849.0
 offset_top = -235.0
-offset_right = -154.0
+offset_right = -83.0
 offset_bottom = -157.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
@@ -120,16 +121,23 @@ script = ExtResource("7_dypit")
 
 [node name="ModeLabel" type="Label" parent="Camera/Hud"]
 visible = false
-offset_left = -848.0
-offset_top = -162.0
-offset_right = -272.0
-offset_bottom = -45.0
+z_index = 1
+offset_left = -285.0
+offset_top = 76.0
+offset_right = 291.0
+offset_bottom = 193.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 35
-text = "You will SHUFFLE the next 2 cards you play"
+text = "SHUFFLE NEXT 2 CARDS"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("7_dypit")
+
+[node name="DeckViewButton" parent="Camera/Hud" instance=ExtResource("34_gi0ha")]
+position = Vector2(-798, -107)
 
 [node name="IntroComic" type="Sprite2D" parent="."]
 position = Vector2(0, 1200)
@@ -154,7 +162,8 @@ theme_override_font_sizes/font_size = 35
 text = "Play cards to earn points
 Make the quota or you're fired
 Points earned past the quota will make you extra money
-Don't get fired."
+Don't get fired.
+-Management"
 horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 2
@@ -226,3 +235,4 @@ stream = ExtResource("22_3rmcx")
 stream = ExtResource("23_3rmcx")
 
 [connection signal="card_played" from="Camera/CanvasLayer/CardSelector" to="." method="_on_card_played"]
+[connection signal="on_clicked" from="Camera/Hud/DeckViewButton" to="." method="_view_deck"]

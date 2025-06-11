@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cimbtoeb3boxy"]
+
+[ext_resource type="Texture2D" uid="uid://c0kueu8bwth8j" path="res://Textures/Buttons/DeckViewButton.png" id="1_jw60m"]
+[ext_resource type="Script" uid="uid://6tvminxvfx8c" path="res://UI/deck_view_button.gd" id="2_lene7"]
+
+[node name="DeckViewButton" type="Sprite2D"]
+texture = ExtResource("1_jw60m")
+script = ExtResource("2_lene7")
