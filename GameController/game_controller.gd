@@ -132,10 +132,6 @@ func reset_game():
 			for i in range(1):
 				deck.push_back(topping.instantiate())
 		
-		if probe.topping_name == "Monterey Jack":
-			for i in range(500):
-				deck.push_back(topping.instantiate())
-		
 		probe.queue_free()
 	
 	set_money(0)
