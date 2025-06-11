@@ -9,7 +9,7 @@ var _top = 0
 var _max_offset = 5
 var toppings : Array[Topping] = []
 
-var peek_offset = 40
+var _peek_offset = 40
 
 var _game_controller_ref = null
 
@@ -25,7 +25,7 @@ signal calculation_done()
 var _calculation_delay_time = 0.5
 var _min_calculation_delay_time = 0.01
 var _calculation_lerp_speed = 0.1
-var calculation_idx = 0
+var _calculation_idx = -1
 
 func setup(game_controller, camera) -> void:
 	_desired_position = global_position
@@ -45,20 +45,52 @@ func add_topping(topping : Node2D) -> void:
 		_camera_ref.desired_position.y -= topping.height
 
 func destroy_topping(i : int) -> void:
+	_calculation_idx = max(0, _calculation_idx - 1)
 	if i < toppings.size() and i > -1:
 		var destroyed = toppings.pop_at(i)
 		for j in range(i, toppings.size()):
 			toppings[j].desired_position.y += destroyed.height
 		_top_bun_desired_y += destroyed.height
+		_top += destroyed.height
 		remove_child(destroyed)
 
 func insert_topping(i : int, topping : Topping) -> void:
-	if i < toppings.size() and i > -1:
-		toppings.insert(i, topping)
-		for j in range(i + 1, toppings.size()):
-			toppings[j].desired_position.y += topping.height
+	var height = 0
+	for j in range(i):
+		height += toppings[j].height
+		
+	toppings.insert(i, topping)
+	var new_pos = to_global(Vector2.ZERO) + Vector2(randi_range(-_max_offset, _max_offset), -height)
+	topping.global_position = new_pos
+	topping.desired_position = new_pos
+	add_child(topping)
+	
+	for j in range(i + 1, toppings.size()):
+		toppings[j].global_position.y -= topping.height
+		toppings[j].desired_position.y -= topping.height
+		remove_child(toppings[j])
+		add_child(toppings[j])
+	
+	if _calculation_idx != -1 and _calculation_idx < i:
+		topping.global_position.y -= _peek_offset
+		topping.desired_position.y -= _peek_offset
+	
+	_top_bun_desired_y -= topping.height
+	_top -= topping.height
+
+	remove_child(_top_bun)
+	add_child(_top_bun)
+
+func change_idx(i) -> void:
+	for j in range(_calculation_idx + 1, toppings.size()):
+		if j != 0:
+			toppings[j].desired_position.y += _peek_offset
+	for j in range(i + 1, toppings.size()):
+		toppings[j].desired_position.y -= _peek_offset
+	_calculation_idx = i
 
 func calculate() -> void:
+	_calculation_idx = 0
 	_top_bun.global_position = Vector2(to_global(Vector2.ZERO).x, _camera_ref.global_position.y - get_viewport_rect().size.y)
 	_top_bun_desired_y = _top
 	
@@ -71,21 +103,21 @@ func calculate() -> void:
 	_calculation_timer.start(_calculation_delay_time)
 	
 	for i in range(1, toppings.size()):
-		toppings[i].desired_position.y -= peek_offset
-	_top_bun_desired_y -= peek_offset
+		toppings[i].desired_position.y -= _peek_offset
+	_top_bun_desired_y -= _peek_offset
 
 func _on_calculation_timer_timeout() -> void:
-	if calculation_idx < toppings.size():
+	if _calculation_idx < toppings.size():
 		$GradeSound.play()
 		$GradeSound.pitch_scale = min($GradeSound.pitch_scale * 1.01, 2.5)
-		toppings[calculation_idx].bounce()
-		if calculation_idx != 0:
-			toppings[calculation_idx].desired_position.y += peek_offset
-		toppings[calculation_idx].calculate(toppings, _game_controller_ref)
-		calculation_idx += 1
-	if calculation_idx < toppings.size():
+		toppings[_calculation_idx].bounce()
+		if _calculation_idx != 0:
+			toppings[_calculation_idx].desired_position.y += _peek_offset
+		toppings[_calculation_idx].calculate(toppings, _game_controller_ref)
+		_calculation_idx += 1
+	if _calculation_idx < toppings.size():
 		_calculation_delay_time = lerp(float(_calculation_delay_time), float(_min_calculation_delay_time), _calculation_lerp_speed)
-		_camera_ref.desired_position.y = toppings[calculation_idx].global_position.y
+		_camera_ref.desired_position.y = toppings[_calculation_idx].global_position.y
 		_calculation_timer.start(_calculation_delay_time)
 	else:
 		$FinishedTimer.start()
@@ -93,7 +125,7 @@ func _on_calculation_timer_timeout() -> void:
 func _on_pause_finished() -> void:
 	_camera_ref.desired_position.y = 0
 	_is_done = true
-	_top_bun_desired_y += peek_offset
+	_top_bun_desired_y += _peek_offset
 
 func _physics_process(delta):
 	_top_bun.global_position.y = lerp(_top_bun.global_position.y, float(_top_bun_desired_y), _lerp_speed)

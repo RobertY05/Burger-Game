@@ -3,7 +3,8 @@ extends Node2D
 
 # ----- stats -----
 
-var topping_type = "Undefined"
+enum types {PROTEIN, CHEESE, VEGETABLE, SAUCE, OTHER}
+var topping_type : types
 var topping_name = "Undefined"
 
 # height in pixels
@@ -21,6 +22,20 @@ var _lerp_speed = 0.4
 
 func get_image():
 	return $Sprite2D.texture
+
+func type_to_string(type):
+	if type == types.PROTEIN:
+		return "Protein"
+	elif type == types.CHEESE:
+		return "Cheese"
+	elif type == types.VEGETABLE:
+		return "Vegetable"
+	elif type == types.SAUCE:
+		return "Sauce"
+	elif type == types.OTHER:
+		return "Other"
+	else:
+		return "Unknown Type"
 
 # for every topping, define these functions, by default they do nothing:
 func calculate(topping_list, game_controller):

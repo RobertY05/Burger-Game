@@ -4,7 +4,7 @@ static var times_played = 0
 
 func _init():
 	topping_name = "Monterey Jack"
-	topping_type = "Cheese"
+	topping_type = types.CHEESE
 	height = 5
 	rarity = tiers.COMMON
 	cost = 30

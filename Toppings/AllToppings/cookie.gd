@@ -12,7 +12,7 @@ var _game_controller_ref = null
 
 func _init():
 	topping_name = "Cookie"
-	topping_type = "Other"
+	topping_type = types.OTHER
 	height = 10
 	rarity = tiers.RARE
 	cost = 25

@@ -2,7 +2,7 @@ extends Topping
 
 func _init():
 	topping_name = "Pickle"
-	topping_type = "Vegetable"
+	topping_type = types.VEGETABLE
 	height = 5
 	rarity = tiers.COMMON
 	cost = 3

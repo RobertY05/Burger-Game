@@ -2,7 +2,7 @@ extends Topping
 
 func _init():
 	topping_name = "Ketchup"
-	topping_type = "Other"
+	topping_type = types.SAUCE
 	height = 1
 	rarity = tiers.UNCOMMON
 	cost = 12

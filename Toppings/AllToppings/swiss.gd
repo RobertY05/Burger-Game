@@ -2,7 +2,7 @@ extends Topping
 
 func _init():
 	topping_name = "Swiss Cheese"
-	topping_type = "Cheese"
+	topping_type = types.CHEESE
 	height = 5
 	rarity = tiers.COMMON
 	cost = 8

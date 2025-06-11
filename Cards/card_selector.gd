@@ -21,11 +21,11 @@ var _visible_hand = []
 # true hand, list of toppings
 var _hand : Array[Topping]
 
-var _drawed_modulate = Color.LIGHT_GRAY
+var _drawed_modulate = Color.SLATE_GRAY
 
 var _desired_card_width = 250
 var _actual_width = 250
-var _min_width = 150
+var _min_width = 200
 
 # margin for max length
 var _screen_margin = 150

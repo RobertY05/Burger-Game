@@ -119,18 +119,29 @@ func reset_game():
 	for topping in all_toppings:
 		var probe = topping.instantiate()
 		
-		if probe.topping_name == "Beef Patty":
-			for i in range(2):
+		#if probe.topping_name == "Beef Patty":
+			#for i in range(2):
+				#deck.push_back(topping.instantiate())
+		#if probe.topping_name == "Cheddar":
+			#for i in range(3):
+				#deck.push_back(topping.instantiate())
+		#if probe.topping_name == "Lettuce":
+			#for i in range(2):
+				#deck.push_back(topping.instantiate())
+		#if probe.topping_name == "Ketchup":
+			#for i in range(1):
+				#deck.push_back(topping.instantiate())
+		if probe.topping_name == "Ants":
+			for i in range(50):
 				deck.push_back(topping.instantiate())
-		if probe.topping_name == "Cheddar":
-			for i in range(3):
+		if probe.topping_name == "Pickle":
+			for i in range(200):
 				deck.push_back(topping.instantiate())
-		if probe.topping_name == "Lettuce":
-			for i in range(2):
+		if probe.topping_name == "Tiny Horse":
+			for i in range(50):
 				deck.push_back(topping.instantiate())
-		if probe.topping_name == "Ketchup":
-			for i in range(1):
-				deck.push_back(topping.instantiate())
+		#for i in range(2):
+			#deck.push_back(topping.instantiate())
 		
 		probe.queue_free()
 	
@@ -300,11 +311,11 @@ func _ready():
 	for i in all_toppings:
 		var probe = i.instantiate()
 		probe.reset()
-		if probe.topping_type == "Cheese":
+		if probe.topping_type == probe.types.CHEESE:
 			cheese_count += 1
-		elif probe.topping_type == "Vegetable":
+		elif probe.topping_type == probe.types.VEGETABLE:
 			vegetable_count += 1
-		elif probe.topping_type == "Protein":
+		elif probe.topping_type == probe.types.PROTEIN:
 			protein_count += 1
 		else:
 			other_count += 1
@@ -329,6 +340,11 @@ func _process(delta):
 		if _need_button:
 			_need_button = false
 			_create_done_button(_grade_burger)
+	
+	if Input.is_action_just_pressed("debug"):
+		burger.insert_topping(0, all_toppings[0].instantiate())
+	if Input.is_action_just_pressed("debug2"):
+		burger.destroy_topping(0)
 
 
 func _view_deck() -> void:

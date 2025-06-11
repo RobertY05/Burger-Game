@@ -2,7 +2,7 @@ extends Topping
 
 func _init():
 	topping_name = "Egg"
-	topping_type = "Protein"
+	topping_type = types.PROTEIN
 	height = 5
 	rarity = tiers.COMMON
 	cost = 18

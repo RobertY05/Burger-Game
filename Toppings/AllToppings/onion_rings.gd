@@ -2,7 +2,7 @@ extends Topping
 
 func _init():
 	topping_name = "Onion Rings"
-	topping_type = "Other"
+	topping_type = types.OTHER
 	height = 5
 	rarity = tiers.UNCOMMON
 	cost = 15

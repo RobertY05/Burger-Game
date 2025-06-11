@@ -1,7 +1,13 @@
 extends Node2D
 
+@export var _card_back_protein : CompressedTexture2D
+@export var _card_back_cheese : CompressedTexture2D
+@export var _card_back_vegetable : CompressedTexture2D
+@export var _card_back_sauce : CompressedTexture2D
+@export var _card_back_other : CompressedTexture2D
+
 # stored topping
-var _topping
+var _topping : Topping
 
 var _dying = false
 
@@ -23,11 +29,23 @@ var _lerp_speed = 0.4
 func setup(topping):
 	_topping = topping
 	$CardImage.texture = topping.get_image()
-	$CardName.text = topping.topping_name
-	$CardType.text = topping.topping_type
-	$CardDescription.text = topping.get_description()
+	
+	if _topping.topping_type == _topping.types.PROTEIN:
+		$CardBack.texture = _card_back_protein
+	elif _topping.topping_type == _topping.types.CHEESE:
+		$CardBack.texture = _card_back_cheese
+	elif _topping.topping_type == _topping.types.VEGETABLE:
+		$CardBack.texture = _card_back_vegetable
+	elif _topping.topping_type == _topping.types.SAUCE:
+		$CardBack.texture = _card_back_sauce
+	elif _topping.topping_type == _topping.types.OTHER:
+		$CardBack.texture = _card_back_other
+	
+	update_description()
 
 func update_description():
+	$CardName.text = _topping.topping_name
+	$CardType.text = _topping.type_to_string(_topping.topping_type)
 	$CardDescription.text = _topping.get_description()
 
 # starts the animation and returns the stored topping

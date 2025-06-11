@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4gcxmpvhy75g"]
+[gd_scene load_steps=9 format=3 uid="uid://d4gcxmpvhy75g"]
 
 [ext_resource type="Script" uid="uid://drfmya8gr44bl" path="res://Cards/card.gd" id="1_6ma3f"]
-[ext_resource type="Texture2D" uid="uid://ba3o555ttjhhr" path="res://Textures/CardBack.png" id="2_5u7pk"]
+[ext_resource type="Texture2D" uid="uid://ba3o555ttjhhr" path="res://Textures/CardBacks/CardBack.png" id="2_5u7pk"]
+[ext_resource type="Texture2D" uid="uid://e1ibj6cs0afx" path="res://Textures/CardBacks/CardBackProtein.png" id="2_wqwah"]
 [ext_resource type="Texture2D" uid="uid://bfsh4is6eqop6" path="res://Textures/Toppings/BeefPatty.png" id="3_5u7pk"]
+[ext_resource type="Texture2D" uid="uid://ch5cjkb00n5pt" path="res://Textures/CardBacks/CardBackCheese.png" id="3_mi3y0"]
+[ext_resource type="Texture2D" uid="uid://crhe75gp15rlm" path="res://Textures/CardBacks/CardBackVegetable.png" id="4_203mn"]
+[ext_resource type="Texture2D" uid="uid://dyi3hm02ocylr" path="res://Textures/CardBacks/CardBackSauce.png" id="5_5kow2"]
+[ext_resource type="Texture2D" uid="uid://dym7g8146vlxn" path="res://Textures/CardBacks/CardBackOther.png" id="6_hujg2"]
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_6ma3f")
+_card_back_protein = ExtResource("2_wqwah")
+_card_back_cheese = ExtResource("3_mi3y0")
+_card_back_vegetable = ExtResource("4_203mn")
+_card_back_sauce = ExtResource("5_5kow2")
+_card_back_other = ExtResource("6_hujg2")
 
 [node name="CardBack" type="Sprite2D" parent="."]
 texture = ExtResource("2_5u7pk")
@@ -20,6 +30,8 @@ offset_top = -142.0
 offset_right = 82.0
 offset_bottom = -119.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 22
 text = "TOPPING"
 horizontal_alignment = 1
@@ -32,8 +44,8 @@ offset_top = -48.0
 offset_right = 82.0
 offset_bottom = -25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0.266667, 1)
-theme_override_constants/outline_size = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 15
 text = "TYPE"
 horizontal_alignment = 1
@@ -46,9 +58,11 @@ offset_top = -21.0
 offset_right = 87.0
 offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = -7
-theme_override_constants/paragraph_spacing = 3
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/paragraph_spacing = 5
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 13
 text = "Gain 1 point for every card played
 suh my dih asdf asdf asdf asdf asdf asdf asd fasdf asdf as
 asdf asdf asdf asdf asdf asd fasfasd fasd fasf asd fasd f 1892347921349812479821347821748398217347981273487238917234"

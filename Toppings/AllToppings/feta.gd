@@ -4,7 +4,7 @@ var times_played = 0
 
 func _init():
 	topping_name = "Feta"
-	topping_type = "Cheese"
+	topping_type = types.CHEESE
 	height = 1
 	rarity = tiers.UNCOMMON
 	cost = 8

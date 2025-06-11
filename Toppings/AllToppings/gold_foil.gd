@@ -2,7 +2,7 @@ extends Topping
 
 func _init():
 	topping_name = "Gold Foil"
-	topping_type = "Other"
+	topping_type = types.OTHER
 	height = 3
 	rarity = tiers.UNCOMMON
 	cost = 25
