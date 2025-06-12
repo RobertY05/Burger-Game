@@ -1,5 +1,7 @@
 extends Topping
 
+const _flat_points = -1
+
 func _init():
 	topping_name = "Sand"
 	topping_type = types.OTHER
@@ -8,10 +10,10 @@ func _init():
 	cost = -50
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
-	game_controller.add_points(-1)
+	game_controller.add_points(_flat_points)
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "Lose 1 point when graded."
+	return "%d points when graded." % _flat_points

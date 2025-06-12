@@ -2,10 +2,10 @@ extends Topping
 
 func _init():
 	topping_name = "Ants"
-	topping_type = types.OTHER
+	topping_type = types.PROTEIN
 	height = 1
 	rarity = tiers.RARE
-	cost = 40
+	cost = 45
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
 	var new_list = []

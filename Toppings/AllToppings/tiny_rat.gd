@@ -1,14 +1,14 @@
 extends Topping
 
-const _scaling = 10
-const _combo_type = types.VEGETABLE
+const _scaling = 20
+const _combo_type = types.CHEESE
 
 var _points_to_add = 0
 
 func _init():
-	topping_name = "Tiny Horse"
+	topping_name = "Tiny Rat"
 	topping_type = types.PROTEIN
-	height = 80
+	height = 5
 	rarity = tiers.RARE
 	cost = 45
 

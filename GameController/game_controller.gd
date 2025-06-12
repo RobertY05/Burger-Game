@@ -39,7 +39,7 @@ var _need_button = true
 # "level / difficulty"
 var _heat = 0
 
-var _money = 0
+var _money := 0.0
 
 var deck = []
 
@@ -50,7 +50,7 @@ var _hand_size = 5
 # -----play variables------
 
 # points scored this "play"
-var _points = 0
+var _points := 0.0
 
 # list of toppings that represent the draw pile
 var draw_pile = []
@@ -79,26 +79,26 @@ var burger : Burger
 func get_points():
 	return _points
 
-func set_points(new_points : int):
+func set_points(new_points : float):
 	if _points != new_points:
 		_points = new_points
-		_points_label.change_text("POINTS: " + str(new_points))
+		_points_label.change_text("POINTS: %0.0f" % _points)
 
-func add_points(new_points : int):
+func add_points(new_points : float):
 	print("Add ", str(new_points))
 	set_points(get_points() + new_points)
 
 func multiply_points(new_points : float):
 	print("Mult ", str(new_points))
-	set_points(int(get_points() * new_points))
+	set_points(get_points() * new_points)
 
 func get_money():
 	return _money
 
-func set_money(new_money : int):
+func set_money(new_money : float):
 	if _money != new_money:
 		_money = new_money
-		_money_label.change_text("MONEY: " + str(new_money))
+		_money_label.change_text("MONEY: %0.0f" % _money)
 
 func set_mode(mode, times = 1):
 	play_mode = mode
@@ -114,34 +114,27 @@ func reset_game():
 	_camera.global_position = Vector2.ZERO
 	_camera.desired_position = Vector2.ZERO
 	
+	for topping in deck:
+		topping.queue_free()
 	deck = []
-	# temp reset...
+
 	for topping in all_toppings:
 		var probe = topping.instantiate()
-		
-		#if probe.topping_name == "Beef Patty":
-			#for i in range(2):
-				#deck.push_back(topping.instantiate())
-		#if probe.topping_name == "Cheddar":
-			#for i in range(3):
-				#deck.push_back(topping.instantiate())
-		#if probe.topping_name == "Lettuce":
-			#for i in range(2):
-				#deck.push_back(topping.instantiate())
-		#if probe.topping_name == "Ketchup":
-			#for i in range(1):
-				#deck.push_back(topping.instantiate())
-		if probe.topping_name == "Ants":
-			for i in range(50):
+		if probe.topping_name == "Beef Patty":
+			for i in range(2):
 				deck.push_back(topping.instantiate())
-		if probe.topping_name == "Pickle":
-			for i in range(200):
+		if probe.topping_name == "Cheddar":
+			for i in range(3):
 				deck.push_back(topping.instantiate())
-		if probe.topping_name == "Tiny Horse":
-			for i in range(50):
+		if probe.topping_name == "Lettuce":
+			for i in range(2):
 				deck.push_back(topping.instantiate())
-		#for i in range(2):
-			#deck.push_back(topping.instantiate())
+		if probe.topping_name == "Ketchup":
+			for i in range(1):
+				deck.push_back(topping.instantiate())
+		if probe.topping_name == "Takeout Box":
+			for i in range(2):
+				deck.push_back(topping.instantiate())
 		
 		probe.queue_free()
 	
@@ -149,7 +142,7 @@ func reset_game():
 	_heat = 0
 	_hand_size = 5
 	
-	_target_scores = [10, 15, 20]
+	_target_scores = [10.0, 15.0, 20.0]
 	
 	start_day()
 
@@ -166,8 +159,7 @@ func start_day():
 	draw_pile.shuffle()
 	
 	for i in range(_target_scores.size()):
-		_target_scores[i] += _target_scores[i] * 0.05 + _heat * 4
-		_target_scores[i] = int(_target_scores[i])
+		_target_scores[i] += round(_target_scores[i] * 0.05 + _heat * 4)
 	
 	_heat += 1
 	
@@ -215,6 +207,12 @@ func get_card(topping):
 	_update_card_label()
 	if _card_selector.viewing:
 		_card_selector.add_card(topping)
+
+func lose_card(topping):
+	deck.erase(topping)
+	if _card_selector.viewing:
+		_card_selector.lose_card(topping)
+	topping.queue_free()
 
 # draws a topping from draw_pile and generates a card, does nothing if deck is empty
 func draw_card(x = 1):
@@ -264,7 +262,7 @@ func _on_calculation_done() -> void:
 		return
 	
 	$WinSound.play()
-	var rate = int(_target_scores[_cur_target] * _money_percent)
+	var rate = _target_scores[_cur_target] * _money_percent
 	set_money(get_money() + (_points - _target_scores[_cur_target]) / rate)
 	set_points(0)
 	
@@ -286,8 +284,8 @@ func _update_burger_number():
 	burger_number.text = "BURGER " + str(_cur_target + 1) + "/3"
 
 func _update_target_label():
-	_target_label.text = "MIN POINTS: " + str(_target_scores[_cur_target])
-	_rate_label.text = "1$ / " + str(int(_target_scores[_cur_target] * _money_percent)) + " POINTS EXTRA"
+	_target_label.text = "MIN POINTS: %0.0f" % _target_scores[_cur_target]
+	_rate_label.text = "1$ / %0.0f POINTS EXTRA" % (_target_scores[_cur_target] * _money_percent)
 
 func _update_card_label():
 	_cards_label.change_text("CARDS LEFT: " + str(draw_pile.size()))

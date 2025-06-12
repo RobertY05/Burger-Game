@@ -1,5 +1,7 @@
 extends Topping
 
+const _cards_to_draw = 2
+
 func _init():
 	topping_name = "Lettuce"
 	topping_type = types.VEGETABLE
@@ -11,7 +13,7 @@ func calculate(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
-	game_controller.draw_card(2)
+	game_controller.draw_card(_cards_to_draw)
 
 func get_description():
-	return "Draw 2 cards when played."
+	return "Draw %d cards when played." % _cards_to_draw

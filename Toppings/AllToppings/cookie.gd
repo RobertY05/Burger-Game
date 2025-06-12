@@ -1,5 +1,7 @@
 extends Topping
 
+const _flat_points = 5
+
 var _clickable = false
 var _width = 200
 var _height = 100
@@ -25,7 +27,7 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	_game_controller_ref = game_controller
 
 func get_description():
-	return "Once graded, you can click on this cookie to earn +5 points."
+	return "Once graded, you can click on this cookie to earn +%d points." % _flat_points
 
 func _process(delta):
 	var box = Rect2(global_position - Vector2(_width, 50) / 2, Vector2(_width, 50))
@@ -33,7 +35,7 @@ func _process(delta):
 	if box.has_point(get_global_mouse_position()) and _clickable:
 		_desired_size = _big
 		if Input.is_action_just_pressed("left_click"):
-			_game_controller_ref.add_points(5)
+			_game_controller_ref.add_points(_flat_points)
 			scale = _little
 
 func _physics_process(delta):

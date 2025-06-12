@@ -1,5 +1,9 @@
 extends Topping
 
+const _flat_points = 20
+const _bonus_points = 80
+const _combo_type = types.PROTEIN
+
 func _init():
 	topping_name = "Veggie Patty"
 	topping_type = types.VEGETABLE
@@ -8,7 +12,7 @@ func _init():
 	cost = 15
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
-	game_controller.add_points(20)
+	game_controller.add_points(_flat_points)
 	var protein = false
 	for i in range(topping_list.size()):
 		if topping_list[i].topping_type == types.PROTEIN:
@@ -16,10 +20,10 @@ func calculate(topping_list : Array[Topping], game_controller : GameController):
 			protein = true
 	
 	if not protein:
-		game_controller.add_points(80)
+		game_controller.add_points(_bonus_points)
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "+20 points when graded. \n Additional +80 points if burger has no 'Protein' cards when graded."
+	return "+%d points when graded. \n Additional +%d points if burger has no '%s' cards when graded." % [_flat_points, _bonus_points, type_to_string(_combo_type)]

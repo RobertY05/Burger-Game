@@ -25,6 +25,9 @@ var _max_jump_x = 30
 var desired_position = position
 var _lerp_speed = 0.4
 
+func get_topping():
+	return _topping
+
 # call this after setting up
 func setup(topping):
 	_topping = topping

@@ -39,6 +39,14 @@ func add_card(topping):
 	_hand.push_back(topping)
 	draw_card(topping)
 
+func lose_card(topping):
+	for i in range(_visible_hand.size()):
+		if _visible_hand[i].get_topping() == topping:
+			_visible_hand[i].play()
+			_visible_hand.pop_at(i)
+			break
+	
+
 func draw_card(topping):
 	var new_card = _card_scene.instantiate()
 	new_card.setup(topping)

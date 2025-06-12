@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbrypm16wvbg"]
+
+[ext_resource type="Script" uid="uid://mp3wsklcf3t2" path="res://Toppings/AllToppings/pineapple.gd" id="1_y3m3h"]
+[ext_resource type="Texture2D" uid="uid://cxxki8r30hryn" path="res://Textures/Toppings/Pineapple.png" id="2_om8a1"]
+
+[node name="Pineapple" type="Node2D"]
+script = ExtResource("1_y3m3h")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_om8a1")

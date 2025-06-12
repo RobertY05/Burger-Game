@@ -1,5 +1,8 @@
 extends Topping
 
+const _combo = "Pickle"
+const _combo_draw = 1
+
 func _init():
 	topping_name = "Pickle"
 	topping_type = types.VEGETABLE
@@ -13,9 +16,9 @@ func calculate(topping_list : Array[Topping], game_controller : GameController):
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.draw_card()
 	for i in range(topping_list.size()):
-		if topping_list[i].topping_name == "Pickle":
-			game_controller.draw_card()
+		if topping_list[i].topping_name == _combo:
+			game_controller.draw_card(_combo_draw)
 			topping_list[i].flash()
 
 func get_description():
-	return "Draw a card for every 'Pickle' played this burger."
+	return "Draw %d card for every '%s' played this burger." % [_combo_draw, _combo]

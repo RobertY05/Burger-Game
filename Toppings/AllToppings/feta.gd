@@ -1,5 +1,8 @@
 extends Topping
 
+const _flat_points = 115
+const _points_to_lose = 15
+
 var times_played = 0
 
 func _init():
@@ -10,10 +13,10 @@ func _init():
 	cost = 8
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
-	game_controller.add_points(115 - times_played * 15)
+	game_controller.add_points(_flat_points - times_played * _points_to_lose)
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	times_played += 1
 
 func get_description():
-	return "+115 points when graded. \n Lose 15 points each time this card was played previously when graded. \n You will lose " + str((times_played + 1) * 15) + " points."
+	return "+%d points when graded. \nLose %d points each time this card was played previously when graded. \nYou will lose %d points when graded." % [_flat_points, _points_to_lose, (times_played + 1) * 15]

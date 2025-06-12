@@ -20,4 +20,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "When graded, also re-grade the topping above and below it. \n Does not work on 'Ketchup'"
+	return "When graded, also grade the topping above and below it. \n Does not work on '%s'" % topping_name

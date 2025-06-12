@@ -45,7 +45,8 @@ func add_topping(topping : Node2D) -> void:
 		_camera_ref.desired_position.y -= topping.height
 
 func destroy_topping(i : int) -> void:
-	_calculation_idx = max(0, _calculation_idx - 1)
+	if i <= _calculation_idx and _calculation_idx != -1:
+		_calculation_idx -= 1
 	if i < toppings.size() and i > -1:
 		var destroyed = toppings.pop_at(i)
 		for j in range(i, toppings.size()):
@@ -71,9 +72,13 @@ func insert_topping(i : int, topping : Topping) -> void:
 		remove_child(toppings[j])
 		add_child(toppings[j])
 	
-	if _calculation_idx != -1 and _calculation_idx < i:
-		topping.global_position.y -= _peek_offset
-		topping.desired_position.y -= _peek_offset
+	if _calculation_idx != -1:
+		if _calculation_idx < i:
+			topping.global_position.y -= _peek_offset
+			topping.desired_position.y -= _peek_offset
+		elif _calculation_idx + 1 < toppings.size():
+			toppings[_calculation_idx + 1].global_position.y -= _peek_offset
+			toppings[_calculation_idx + 1].desired_position.y -= _peek_offset
 	
 	_top_bun_desired_y -= topping.height
 	_top -= topping.height

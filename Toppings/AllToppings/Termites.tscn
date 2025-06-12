@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://coc7cdvstbjwp"]
+
+[ext_resource type="Script" uid="uid://clq4lumoy60t0" path="res://Toppings/AllToppings/termites.gd" id="1_ulfo5"]
+[ext_resource type="PackedScene" uid="uid://c14djnv7s8hdl" path="res://Toppings/AllToppings/Sand.tscn" id="2_q4rcn"]
+[ext_resource type="Texture2D" uid="uid://del4g47nvewmt" path="res://Textures/Toppings/Termites.png" id="3_ebgef"]
+
+[node name="Termites" type="Node2D"]
+script = ExtResource("1_ulfo5")
+_sand_topping = ExtResource("2_q4rcn")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_ebgef")

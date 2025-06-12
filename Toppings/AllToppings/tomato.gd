@@ -1,5 +1,8 @@
 extends Topping
 
+const _flat_points = 15
+const _cards_to_draw = 1
+
 func _init():
 	topping_name = "Tomato"
 	topping_type = types.VEGETABLE
@@ -11,8 +14,8 @@ func calculate(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
-	game_controller.add_points(15)
-	game_controller.draw_card(1)
+	game_controller.add_points(_flat_points)
+	game_controller.draw_card(_cards_to_draw)
 
 func get_description():
-	return "+15 points when played. \n Draw a card."
+	return "+%d points when played. \nDraw %d card." % [_flat_points, _cards_to_draw]
