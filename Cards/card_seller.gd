@@ -8,7 +8,6 @@ var _game_controller_ref = null
 
 var _desired_scale = Vector2(1, 1)
 var _big = Vector2(1.1, 1.1)
-var _lerp_speed = 0.4
 
 var _cost = 0
 var _purchased = false
@@ -38,8 +37,8 @@ func _process(delta):
 			$BuySound.play_sound()
 	else:
 		_desired_scale = Vector2(1, 1)
-	
+
 	if _card != null:
-		_card.scale = lerp(_card.scale, _desired_scale, _lerp_speed)
+		_card.desired_scale = _desired_scale
 	else:
 		queue_free()

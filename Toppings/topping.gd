@@ -20,6 +20,8 @@ var _lerp_speed = 0.4
 
 # ----- stats -----
 
+signal stats_changed
+
 func get_image():
 	return $Sprite2D.texture
 

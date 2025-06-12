@@ -14,15 +14,18 @@ func _init():
 	cost = 40
 
 func calculate(topping_list : Array[Topping], game_controller : GameController):
+	var needs_change = false
 	for i in range(topping_list.size()):
 		if topping_list[i].topping_type == _combo_type:
 			_points_to_award += _scaling
 			topping_list[i].flash()
-	
+			needs_change = true
+	if needs_change:
+		stats_changed.emit()
 	game_controller.add_points(_points_to_award)
 
 func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "+%d points when graded. \nPermanently buff this card by %d point for every '%s' type card in the burger when graded. \nCurrently at +%d points." % [_starting_points, _scaling, type_to_string(_combo_type), _points_to_award]
+	return "+%d points when graded.\nPermanently buff this card by %d point for every '%s' type card in the burger when graded.\nCurrently at +%d points." % [_starting_points, _scaling, type_to_string(_combo_type), _points_to_award]

@@ -106,8 +106,6 @@ func _process(delta):
 							card_played.emit(_visible_hand[i].play())
 						_visible_hand.pop_at(i)
 						_hand.pop_at(i)
-						for card in _visible_hand:
-							card.update_description()
 						break
 		else:
 			_visible_hand[i].desired_position.y = get_viewport_rect().size.y - _disabled_y

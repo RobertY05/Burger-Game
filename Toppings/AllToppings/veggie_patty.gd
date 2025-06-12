@@ -26,4 +26,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "+%d points when graded. \n Additional +%d points if burger has no '%s' cards when graded." % [_flat_points, _bonus_points, type_to_string(_combo_type)]
+	return "+%d points when graded.\nAdditional +%d points if burger has no '%s' cards when graded." % [_flat_points, _bonus_points, type_to_string(_combo_type)]

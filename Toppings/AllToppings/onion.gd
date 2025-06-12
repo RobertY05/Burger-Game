@@ -18,4 +18,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.draw_card(_cards_to_draw)
 
 func get_description():
-	return "Draw %d cards. \nThe next %d cards you play will be sent to the bottom of your draw pile." % [_cards_to_draw, _cards_to_shuffle]
+	return "Draw %d cards.\nThe next %d cards you play will be sent to the bottom of your draw pile." % [_cards_to_draw, _cards_to_shuffle]

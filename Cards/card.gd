@@ -25,14 +25,28 @@ var _max_jump_x = 30
 var desired_position = position
 var _lerp_speed = 0.4
 
+var desired_scale = Vector2(1, 1)
+var _big = Vector2(1.2, 1.2)
+
 func get_topping():
 	return _topping
 
 # call this after setting up
 func setup(topping):
 	_topping = topping
-	$CardImage.texture = topping.get_image()
+	_topping.stats_changed.connect(_on_stats_changed)
+	update_card()
+
+func _on_stats_changed():
+	scale = _big
+	update_card()
+
+func update_card():
+	$CardName.text = _topping.topping_name
+	$CardType.text = _topping.type_to_string(_topping.topping_type)
+	$CardDescription.text = _topping.get_description()
 	
+	$CardImage.texture = _topping.get_image()
 	if _topping.topping_type == _topping.types.PROTEIN:
 		$CardBack.texture = _card_back_protein
 	elif _topping.topping_type == _topping.types.CHEESE:
@@ -43,13 +57,6 @@ func setup(topping):
 		$CardBack.texture = _card_back_sauce
 	elif _topping.topping_type == _topping.types.OTHER:
 		$CardBack.texture = _card_back_other
-	
-	update_description()
-
-func update_description():
-	$CardName.text = _topping.topping_name
-	$CardType.text = _topping.type_to_string(_topping.topping_type)
-	$CardDescription.text = _topping.get_description()
 
 # starts the animation and returns the stored topping
 func play():
@@ -67,6 +74,7 @@ func drop():
 	return _topping
 
 func _physics_process(delta):
+	scale = lerp(scale, desired_scale, _lerp_speed)
 	if _dying:
 		global_rotation_degrees += _spin
 		global_position += _velocity
@@ -75,4 +83,4 @@ func _physics_process(delta):
 		if position.y > get_viewport_rect().size.y * 2:
 			queue_free()
 	else:
-		position = position.lerp(desired_position, _lerp_speed)
+		position = lerp(position, desired_position, _lerp_speed)

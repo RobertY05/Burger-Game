@@ -132,10 +132,10 @@ func reset_game():
 		if probe.topping_name == "Ketchup":
 			for i in range(1):
 				deck.push_back(topping.instantiate())
-		if probe.topping_name == "Takeout Box":
-			for i in range(2):
+		if probe.topping_name == "Bear Trap":
+			for i in range(1):
 				deck.push_back(topping.instantiate())
-		
+
 		probe.queue_free()
 	
 	set_money(0)
@@ -305,6 +305,7 @@ func _ready():
 	var cheese_count = 0
 	var vegetable_count = 0
 	var protein_count = 0
+	var sauce_count = 0
 	var other_count = 0
 	for i in all_toppings:
 		var probe = i.instantiate()
@@ -315,6 +316,8 @@ func _ready():
 			vegetable_count += 1
 		elif probe.topping_type == probe.types.PROTEIN:
 			protein_count += 1
+		elif probe.topping_type == probe.types.SAUCE:
+			sauce_count += 1
 		else:
 			other_count += 1
 		
@@ -322,6 +325,7 @@ func _ready():
 	print("Cheese: ", cheese_count)
 	print("Vegetable: ", vegetable_count)
 	print("Protein: ", protein_count)
+	print("Sauce: ", sauce_count)
 	print("Other: ", other_count)
 	_hud.hide()
 	_camera.global_position = _comic_position

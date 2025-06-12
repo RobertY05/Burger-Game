@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://boxdpmhjknoig"]
+
+[ext_resource type="Script" uid="uid://dhkma0ark6hu3" path="res://Toppings/AllToppings/bear_trap.gd" id="1_1nc6r"]
+[ext_resource type="Texture2D" uid="uid://cva5ump3meojk" path="res://Textures/Toppings/BearTrap.png" id="2_1nc6r"]
+[ext_resource type="PackedScene" uid="uid://3km6tvjnmpuf" path="res://Toppings/AllToppings/BearTrapClosed.tscn" id="2_lqtls"]
+
+[node name="BearTrap" type="Node2D"]
+script = ExtResource("1_1nc6r")
+_closed_trap_scene = ExtResource("2_lqtls")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1nc6r")

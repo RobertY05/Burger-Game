@@ -23,4 +23,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "+%d points when graded. \nAdditional +%d points for every '%s' placed below this topping." % [_flat_points, _bonus_points, _combo]
+	return "+%d points when graded.\nAdditional +%d points for every '%s' placed below this topping." % [_flat_points, _bonus_points, _combo]

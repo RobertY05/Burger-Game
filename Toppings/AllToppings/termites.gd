@@ -36,7 +36,7 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 		sand.queue_free()
 
 func get_description():
-	return "1 in %d chance to score x(1+%0.2fX), where X is number of '%s' in burger.\n Add 1 sand to the burger until successful." % [_stop_chance, _bonus_mult, _sand_name]
+	return "1 in %d chance to score x(1+%0.2fX), where X is number of '%s' in burger.\nAdd 1 sand to the burger until successful." % [_stop_chance, _bonus_mult, _sand_name]
 
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE:

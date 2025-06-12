@@ -24,4 +24,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 		game_controller.draw_card(_cards_to_draw)
 
 func get_description():
-	return "Draw %d cards. \nFor every '%s' played this burger draw %d less card." % [_cards_to_draw, _combo, _neg_combo]
+	return "Draw %d cards.\nFor every '%s' played this burger draw %d less card." % [_cards_to_draw, _combo, _neg_combo]

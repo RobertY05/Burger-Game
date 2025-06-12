@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4y3006xxhrer"]
+
+[ext_resource type="Script" uid="uid://cpm0aikl642yc" path="res://Toppings/AllToppings/mayo.gd" id="1_3la7c"]
+[ext_resource type="Texture2D" uid="uid://cbwlg6qlicldh" path="res://Textures/Toppings/Mayo.png" id="2_2e0yg"]
+
+[node name="Mayo" type="Node2D"]
+script = ExtResource("1_3la7c")
+metadata/_custom_type_script = "uid://cfeov315ttfe3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2e0yg")

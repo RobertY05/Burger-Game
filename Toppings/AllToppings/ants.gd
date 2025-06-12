@@ -28,4 +28,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	pass
 
 func get_description():
-	return "Shuffles the burger when graded. \nContinue grading from this ingredient after shuffling."
+	return "Shuffles the burger when graded.\nContinue grading from this ingredient after shuffling."

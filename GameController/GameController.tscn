@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d3j1dl2ybnjjj"]
+[gd_scene load_steps=48 format=3 uid="uid://d3j1dl2ybnjjj"]
 
 [ext_resource type="Script" uid="uid://mtnq6e3yu5a7" path="res://GameController/game_controller.gd" id="1_mgxxk"]
 [ext_resource type="PackedScene" uid="uid://7xe8vsis0d0n" path="res://Cards/CardSelector.tscn" id="2_5usk2"]
@@ -43,11 +43,14 @@
 [ext_resource type="PackedScene" uid="uid://d11nb8pokhmqx" path="res://Toppings/AllToppings/TinyRat.tscn" id="30_cxid4"]
 [ext_resource type="PackedScene" uid="uid://dbrypm16wvbg" path="res://Toppings/AllToppings/Pineapple.tscn" id="31_oapmk"]
 [ext_resource type="PackedScene" uid="uid://chmt44wdc5l4h" path="res://Toppings/AllToppings/TakeoutBox.tscn" id="32_7t5dl"]
+[ext_resource type="PackedScene" uid="uid://c7citdvv1ki3f" path="res://Toppings/AllToppings/CheeseSauce.tscn" id="33_rohur"]
 [ext_resource type="PackedScene" uid="uid://cimbtoeb3boxy" path="res://UI/DeckViewButton.tscn" id="34_gi0ha"]
+[ext_resource type="PackedScene" uid="uid://4y3006xxhrer" path="res://Toppings/AllToppings/Mayo.tscn" id="34_rft3a"]
+[ext_resource type="PackedScene" uid="uid://boxdpmhjknoig" path="res://Toppings/AllToppings/BearTrap.tscn" id="35_y7eew"]
 
 [node name="GameController" type="Node2D"]
 script = ExtResource("1_mgxxk")
-all_toppings = Array[PackedScene]([ExtResource("2_v428q"), ExtResource("3_67v4m"), ExtResource("4_3rmcx"), ExtResource("5_ssl07"), ExtResource("6_4omeg"), ExtResource("7_oxaob"), ExtResource("8_cn4x2"), ExtResource("9_ixtgu"), ExtResource("10_ty2i1"), ExtResource("11_bgah3"), ExtResource("12_i4bi8"), ExtResource("13_3rmcx"), ExtResource("14_4omeg"), ExtResource("15_oxaob"), ExtResource("16_cn4x2"), ExtResource("17_ixtgu"), ExtResource("18_ty2i1"), ExtResource("19_bgah3"), ExtResource("20_i4bi8"), ExtResource("21_1mq2v"), ExtResource("22_lpfio"), ExtResource("23_y4dlp"), ExtResource("24_x2p8m"), ExtResource("25_hw6m4"), ExtResource("26_otynb"), ExtResource("27_gi0ha"), ExtResource("28_pkuak"), ExtResource("29_n3gg7"), ExtResource("30_cxid4"), ExtResource("31_oapmk"), ExtResource("32_7t5dl")])
+all_toppings = Array[PackedScene]([ExtResource("2_v428q"), ExtResource("3_67v4m"), ExtResource("4_3rmcx"), ExtResource("5_ssl07"), ExtResource("6_4omeg"), ExtResource("7_oxaob"), ExtResource("8_cn4x2"), ExtResource("9_ixtgu"), ExtResource("10_ty2i1"), ExtResource("11_bgah3"), ExtResource("12_i4bi8"), ExtResource("13_3rmcx"), ExtResource("14_4omeg"), ExtResource("15_oxaob"), ExtResource("16_cn4x2"), ExtResource("17_ixtgu"), ExtResource("18_ty2i1"), ExtResource("19_bgah3"), ExtResource("20_i4bi8"), ExtResource("21_1mq2v"), ExtResource("22_lpfio"), ExtResource("23_y4dlp"), ExtResource("24_x2p8m"), ExtResource("25_hw6m4"), ExtResource("26_otynb"), ExtResource("27_gi0ha"), ExtResource("28_pkuak"), ExtResource("29_n3gg7"), ExtResource("30_cxid4"), ExtResource("31_oapmk"), ExtResource("32_7t5dl"), ExtResource("33_rohur"), ExtResource("34_rft3a"), ExtResource("35_y7eew")])
 _burger_scene = ExtResource("5_wjggv")
 _done_button_scene = ExtResource("9_fhpwh")
 

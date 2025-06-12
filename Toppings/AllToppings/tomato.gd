@@ -18,4 +18,4 @@ func on_play(topping_list : Array[Topping], game_controller : GameController):
 	game_controller.draw_card(_cards_to_draw)
 
 func get_description():
-	return "+%d points when played. \nDraw %d card." % [_flat_points, _cards_to_draw]
+	return "+%d points when played.\nDraw %d card." % [_flat_points, _cards_to_draw]
